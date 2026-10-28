@@ -1,0 +1,636 @@
+{
+  "workbook": "small_business_budget.xlsx",
+  "generated_at": "2026-10-24T12:35:07.141153+09:00",
+  "source": "live",
+  "models": {
+    "structure": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "judge": "nvidia/nemotron-3-super-120b-a12b",
+    "summary": "nvidia/Nemotron-3-Ultra-550b-a55b"
+  },
+  "outline": {
+    "sheets": [
+      {
+        "name": "Budget",
+        "role": "data",
+        "header_row": 1,
+        "label_column": "A",
+        "notes_column": "I",
+        "total_rows": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "rules_ranges": []
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "a6d9548e9502de7e",
+      "sheet": "Budget",
+      "cell": "H3",
+      "kind": [
+        "aggregate_range_gap",
+        "pattern_break"
+      ],
+      "formula": "=SUM(B3:F3)",
+      "r1c1": "=SUM(RC[-6]:RC[-2])",
+      "value": 675.0,
+      "majority_r1c1": "=SUM(RC[-6]:RC[-1])",
+      "neighbours": [
+        {
+          "cell": "H1",
+          "formula": null,
+          "value": "Total",
+          "r1c1": null
+        },
+        {
+          "cell": "H2",
+          "formula": "=SUM(B2:G2)",
+          "value": 648.0,
+          "r1c1": "=SUM(RC[-6]:RC[-1])"
+        },
+        {
+          "cell": "H4",
+          "formula": "=SUM(B4:G4)",
+          "value": 960.0,
+          "r1c1": "=SUM(RC[-6]:RC[-1])"
+        },
+        {
+          "cell": "H5",
+          "formula": "=SUM(B5:G5)",
+          "value": 1944.0,
+          "r1c1": "=SUM(RC[-6]:RC[-1])"
+        },
+        {
+          "cell": "H6",
+          "formula": "=SUM(B6:G6)",
+          "value": 1296.0,
+          "r1c1": "=SUM(RC[-6]:RC[-1])"
+        }
+      ],
+      "context": {
+        "row_label": "Supplies",
+        "column_header": "Total",
+        "notes": null,
+        "notes_cell": "I3",
+        "comment": null,
+        "number_format": "0.00",
+        "references": [
+          {
+            "sheet": "Budget",
+            "cell": "B3",
+            "formula": "=$J3*(1+$B$10)",
+            "value": 135.0,
+            "row_label": "Supplies",
+            "comment": null
+          },
+          {
+            "sheet": "Budget",
+            "cell": "F3",
+            "formula": "=$J3*(1+$B$10)",
+            "value": 135.0,
+            "row_label": "Supplies",
+            "comment": null
+          }
+        ],
+        "row_neighbours": [
+          {
+            "cell": "E3",
+            "formula": "=$J3*(1+$B$10)",
+            "value": 135.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "F3",
+            "formula": "=$J3*(1+$B$10)",
+            "value": 135.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "G3",
+            "formula": "=$J3*(1+$B$10)",
+            "value": 135.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "I3",
+            "formula": null,
+            "value": null,
+            "r1c1": null
+          },
+          {
+            "cell": "J3",
+            "formula": null,
+            "value": 125,
+            "r1c1": null
+          }
+        ],
+        "pattern_axis": "column",
+        "omitted_cells": [
+          {
+            "sheet": "Budget",
+            "cell": "G3",
+            "value": 135.0
+          }
+        ]
+      },
+      "impact": 135.0,
+      "candidate_id": "a6d9548e9502de7e",
+      "verdict": "error",
+      "confidence": "high",
+      "reason": "Formula omits G3 while neighboring rows include it, causing under-sum.",
+      "evidence": [
+        {
+          "cell": "Budget!H2",
+          "quote": "=SUM(B2:G2)"
+        },
+        {
+          "cell": "Budget!H4",
+          "quote": "=SUM(B4:G4)"
+        }
+      ],
+      "fix": {
+        "cell": "Budget!H3",
+        "new_formula": "=SUM(B3:G3)"
+      },
+      "question": null,
+      "original_verdict": "error",
+      "decided_by": "nvidia/nemotron-3-super-120b-a12b",
+      "grounding": "passed",
+      "grounding_reasons": []
+    },
+    {
+      "id": "6c5def7e1656cd19",
+      "sheet": "Budget",
+      "cell": "D4",
+      "kind": [
+        "pattern_break"
+      ],
+      "formula": "=$J4*(1+C$10)",
+      "r1c1": "=RC10*(1+R10C[-1])",
+      "value": 150,
+      "majority_r1c1": "=RC10*(1+R10C2)",
+      "neighbours": [
+        {
+          "cell": "D1",
+          "formula": null,
+          "value": "Mar",
+          "r1c1": null
+        },
+        {
+          "cell": "D2",
+          "formula": "=$J2*(1+$B$10)",
+          "value": 108.0,
+          "r1c1": "=RC10*(1+R10C2)"
+        },
+        {
+          "cell": "D3",
+          "formula": "=$J3*(1+$B$10)",
+          "value": 135.0,
+          "r1c1": "=RC10*(1+R10C2)"
+        },
+        {
+          "cell": "D5",
+          "formula": "=$J5*(1+$B$10)",
+          "value": 189.0,
+          "r1c1": "=RC10*(1+R10C2)"
+        },
+        {
+          "cell": "D6",
+          "formula": "=$J6*(1+$B$10)",
+          "value": 216.0,
+          "r1c1": "=RC10*(1+R10C2)"
+        },
+        {
+          "cell": "D7",
+          "formula": null,
+          "value": null,
+          "r1c1": null
+        }
+      ],
+      "context": {
+        "row_label": "Utilities",
+        "column_header": "Mar",
+        "notes": null,
+        "notes_cell": "I4",
+        "comment": null,
+        "number_format": "0.00",
+        "references": [
+          {
+            "sheet": "Budget",
+            "cell": "J4",
+            "formula": null,
+            "value": 150,
+            "row_label": "Utilities",
+            "comment": null
+          },
+          {
+            "sheet": "Budget",
+            "cell": "C10",
+            "formula": null,
+            "value": null,
+            "row_label": null,
+            "comment": null
+          }
+        ],
+        "row_neighbours": [
+          {
+            "cell": "A4",
+            "formula": null,
+            "value": "Utilities",
+            "r1c1": null
+          },
+          {
+            "cell": "B4",
+            "formula": "=$J4*(1+$B$10)",
+            "value": 162.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "C4",
+            "formula": "=$J4*(1+$B$10)",
+            "value": 162.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "E4",
+            "formula": "=$J4*(1+$B$10)",
+            "value": 162.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "F4",
+            "formula": "=$J4*(1+$B$10)",
+            "value": 162.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "G4",
+            "formula": "=$J4*(1+$B$10)",
+            "value": 162.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          }
+        ],
+        "pattern_axis": "row"
+      },
+      "impact": null,
+      "candidate_id": "6c5def7e1656cd19",
+      "verdict": "error",
+      "confidence": "high",
+      "reason": "Formula references C10 instead of B10 used consistently across row/column neighbors.",
+      "evidence": [
+        {
+          "cell": "Budget!D4",
+          "quote": "=$J4*(1+C$10)"
+        },
+        {
+          "cell": "Budget!D2",
+          "quote": "=$J2*(1+$B$10)"
+        },
+        {
+          "cell": "Budget!D3",
+          "quote": "=$J3*(1+$B$10)"
+        }
+      ],
+      "fix": {
+        "cell": "Budget!D4",
+        "new_formula": "=$J4*(1+$B$10)"
+      },
+      "question": null,
+      "original_verdict": "error",
+      "decided_by": "nvidia/nemotron-3-super-120b-a12b",
+      "grounding": "passed",
+      "grounding_reasons": []
+    },
+    {
+      "id": "8318f5415ca49eac",
+      "sheet": "Budget",
+      "cell": "E5",
+      "kind": [
+        "hardcoded_in_formula_run"
+      ],
+      "formula": null,
+      "r1c1": null,
+      "value": 999,
+      "majority_r1c1": "=RC10*(1+R10C2)",
+      "neighbours": [
+        {
+          "cell": "E2",
+          "formula": "=$J2*(1+$B$10)",
+          "value": 108.0,
+          "r1c1": "=RC10*(1+R10C2)"
+        },
+        {
+          "cell": "E3",
+          "formula": "=$J3*(1+$B$10)",
+          "value": 135.0,
+          "r1c1": "=RC10*(1+R10C2)"
+        },
+        {
+          "cell": "E4",
+          "formula": "=$J4*(1+$B$10)",
+          "value": 162.0,
+          "r1c1": "=RC10*(1+R10C2)"
+        },
+        {
+          "cell": "E6",
+          "formula": "=$J6*(1+$B$10)",
+          "value": 216.0,
+          "r1c1": "=RC10*(1+R10C2)"
+        },
+        {
+          "cell": "E7",
+          "formula": null,
+          "value": null,
+          "r1c1": null
+        },
+        {
+          "cell": "E8",
+          "formula": null,
+          "value": null,
+          "r1c1": null
+        }
+      ],
+      "context": {
+        "row_label": "Services",
+        "column_header": "Apr",
+        "notes": null,
+        "notes_cell": "I5",
+        "comment": null,
+        "number_format": "0.00",
+        "references": [],
+        "row_neighbours": [
+          {
+            "cell": "B5",
+            "formula": "=$J5*(1+$B$10)",
+            "value": 189.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "C5",
+            "formula": "=$J5*(1+$B$10)",
+            "value": 189.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "D5",
+            "formula": "=$J5*(1+$B$10)",
+            "value": 189.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "F5",
+            "formula": "=$J5*(1+$B$10)",
+            "value": 189.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "G5",
+            "formula": "=$J5*(1+$B$10)",
+            "value": 189.0,
+            "r1c1": "=RC10*(1+R10C2)"
+          },
+          {
+            "cell": "H5",
+            "formula": "=SUM(B5:G5)",
+            "value": 1944.0,
+            "r1c1": "=SUM(RC[-6]:RC[-1])"
+          }
+        ],
+        "pattern_axis": "row"
+      },
+      "impact": null,
+      "candidate_id": "8318f5415ca49eac",
+      "verdict": "error",
+      "confidence": "high",
+      "reason": "Cell E5 contains hardcoded value 999 while all other cells in the row/column pattern use formula =$J* (1+$B$10). No note indicates intentional override.",
+      "evidence": [
+        {
+          "cell": "Budget!E5",
+          "quote": "999"
+        }
+      ],
+      "fix": {
+        "cell": "Budget!E5",
+        "new_formula": "=$J5*(1+$B$10)"
+      },
+      "question": null,
+      "original_verdict": "error",
+      "decided_by": "nvidia/nemotron-3-super-120b-a12b",
+      "grounding": "passed",
+      "grounding_reasons": []
+    },
+    {
+      "id": "e9d38f6e4d3b3742",
+      "sheet": "Budget",
+      "cell": "B10",
+      "kind": [
+        "labelled_constant"
+      ],
+      "formula": null,
+      "r1c1": null,
+      "value": 0.08,
+      "majority_r1c1": null,
+      "neighbours": [
+        {
+          "cell": "B7",
+          "formula": null,
+          "value": null,
+          "r1c1": null
+        },
+        {
+          "cell": "B8",
+          "formula": null,
+          "value": null,
+          "r1c1": null
+        },
+        {
+          "cell": "B9",
+          "formula": null,
+          "value": null,
+          "r1c1": null
+        },
+        {
+          "cell": "B11",
+          "formula": null,
+          "value": 150,
+          "r1c1": null
+        }
+      ],
+      "context": {
+        "row_label": "Tax rate",
+        "column_header": "Jan",
+        "notes": null,
+        "notes_cell": "I10",
+        "comment": null,
+        "number_format": "0%",
+        "references": [],
+        "row_neighbours": [
+          {
+            "cell": "A10",
+            "formula": null,
+            "value": "Tax rate",
+            "r1c1": null
+          },
+          {
+            "cell": "C10",
+            "formula": null,
+            "value": null,
+            "r1c1": null
+          },
+          {
+            "cell": "D10",
+            "formula": null,
+            "value": null,
+            "r1c1": null
+          },
+          {
+            "cell": "E10",
+            "formula": null,
+            "value": null,
+            "r1c1": null
+          }
+        ]
+      },
+      "impact": null,
+      "candidate_id": "e9d38f6e4d3b3742",
+      "verdict": "assumption_to_verify",
+      "confidence": "low",
+      "reason": "No explicit note or comment indicates whether 0.08 is correct; need verification against expected tax rate.",
+      "evidence": [
+        {
+          "cell": "Budget!I10",
+          "quote": ""
+        }
+      ],
+      "fix": null,
+      "question": null,
+      "original_verdict": "assumption_to_verify",
+      "decided_by": "nvidia/nemotron-3-super-120b-a12b",
+      "grounding": "passed",
+      "grounding_reasons": []
+    },
+    {
+      "id": "b849f8298579131e",
+      "sheet": "Budget",
+      "cell": "B11",
+      "kind": [
+        "labelled_constant"
+      ],
+      "formula": null,
+      "r1c1": null,
+      "value": 150,
+      "majority_r1c1": null,
+      "neighbours": [
+        {
+          "cell": "B8",
+          "formula": null,
+          "value": null,
+          "r1c1": null
+        },
+        {
+          "cell": "B9",
+          "formula": null,
+          "value": null,
+          "r1c1": null
+        },
+        {
+          "cell": "B10",
+          "formula": null,
+          "value": 0.08,
+          "r1c1": null
+        }
+      ],
+      "context": {
+        "row_label": "USD/JPY",
+        "column_header": "Jan",
+        "notes": null,
+        "notes_cell": "I11",
+        "comment": null,
+        "number_format": "General",
+        "references": [],
+        "row_neighbours": [
+          {
+            "cell": "A11",
+            "formula": null,
+            "value": "USD/JPY",
+            "r1c1": null
+          },
+          {
+            "cell": "C11",
+            "formula": null,
+            "value": null,
+            "r1c1": null
+          },
+          {
+            "cell": "D11",
+            "formula": null,
+            "value": null,
+            "r1c1": null
+          },
+          {
+            "cell": "E11",
+            "formula": null,
+            "value": null,
+            "r1c1": null
+          }
+        ]
+      },
+      "impact": null,
+      "candidate_id": "b849f8298579131e",
+      "verdict": "ask",
+      "confidence": "medium",
+      "reason": "The value 150 for USD/JPY Jan appears inconsistent with neighbouring cells (B8-B9 blank, B10=0.08) and lacks any explanatory note or rule indicating it is intentional.",
+      "evidence": [
+        {
+          "cell": "Budget!B11",
+          "quote": "150"
+        }
+      ],
+      "fix": null,
+      "question": "What is the intended value for USD/JPY Jan?",
+      "original_verdict": "ask",
+      "decided_by": "nvidia/nemotron-3-super-120b-a12b",
+      "grounding": "passed",
+      "grounding_reasons": []
+    }
+  ],
+  "summary": {
+    "headline": "Multiple formula errors and unverified assumptions found in Budget sheet, including omitted cell G3, wrong reference C10, hardcoded E5, tax rate 0.08, and USD/JPY Jan 150.",
+    "order": [
+      "a6d9548e9502de7e",
+      "6c5def7e1656cd19",
+      "8318f5415ca49eac",
+      "e9d38f6e4d3b3742",
+      "b849f8298579131e"
+    ],
+    "conflicts": [
+      {
+        "candidate_ids": [
+          "6c5def7e1656cd19",
+          "e9d38f6e4d3b3742",
+          "b849f8298579131e"
+        ],
+        "explanation": "All three findings involve cell B10 (value 0.08) – formula reference mismatch, tax rate verification, and USD/JPY context."
+      },
+      {
+        "candidate_ids": [
+          "6c5def7e1656cd19",
+          "8318f5415ca49eac"
+        ],
+        "explanation": "Both relate to formula consistency in row/column patterns – one references wrong column, the other has a hardcoded value breaking the pattern."
+      }
+    ],
+    "question_for_user": "Please confirm the correct tax rate for B10 (currently 0.08) and the intended USD/JPY Jan value (currently 150)."
+  },
+  "cost": {
+    "total_usd": 0.00739332,
+    "usage": "ledger"
+  },
+  "stopped_reason": null,
+  "warnings": [],
+  "precomputed_sample": null
+}

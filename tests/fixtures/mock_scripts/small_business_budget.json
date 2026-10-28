@@ -1,0 +1,154 @@
+{
+  "workbook": "small_business_budget.xlsx",
+  "expectations": [
+    {
+      "cell": "Budget!H3",
+      "kind": [
+        "aggregate_range_gap",
+        "pattern_break"
+      ],
+      "scripted_verdict": "error",
+      "final_verdict": "error",
+      "grounding": "passed",
+      "impact": 135.0
+    },
+    {
+      "cell": "Budget!D4",
+      "kind": [
+        "pattern_break"
+      ],
+      "scripted_verdict": "error",
+      "final_verdict": "error",
+      "grounding": "passed",
+      "impact": null
+    },
+    {
+      "cell": "Budget!E5",
+      "kind": [
+        "hardcoded_in_formula_run"
+      ],
+      "scripted_verdict": "error",
+      "final_verdict": "error",
+      "grounding": "passed",
+      "impact": null
+    },
+    {
+      "cell": "Budget!B10",
+      "kind": [
+        "labelled_constant"
+      ],
+      "scripted_verdict": "assumption_to_verify",
+      "final_verdict": "assumption_to_verify",
+      "grounding": "passed",
+      "impact": null
+    },
+    {
+      "cell": "Budget!B11",
+      "kind": [
+        "labelled_constant"
+      ],
+      "scripted_verdict": "assumption_to_verify",
+      "final_verdict": "assumption_to_verify",
+      "grounding": "passed",
+      "impact": null
+    }
+  ],
+  "responses": [
+    {
+      "content": "{\"sheets\": [{\"name\": \"Budget\", \"role\": \"data\", \"header_row\": 1, \"label_column\": \"A\", \"notes_column\": \"I\", \"total_rows\": [2, 3, 4, 5, 6], \"rules_ranges\": []}]}",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "structure"
+    },
+    {
+      "content": "{\"candidate_id\": \"a6d9548e9502de7e\", \"verdict\": \"error\", \"confidence\": \"high\", \"reason\": \"The supplied local pattern or reference evidence warrants correction.\", \"evidence\": [{\"cell\": \"Budget!H3\", \"quote\": \"=SUM(B3:F3)\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "a6d9548e9502de7e"
+    },
+    {
+      "content": "{\"candidate_id\": \"6c5def7e1656cd19\", \"verdict\": \"error\", \"confidence\": \"high\", \"reason\": \"The supplied local pattern or reference evidence warrants correction.\", \"evidence\": [{\"cell\": \"Budget!D4\", \"quote\": \"=$J4*(1+C$10)\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "6c5def7e1656cd19"
+    },
+    {
+      "content": "{\"candidate_id\": \"8318f5415ca49eac\", \"verdict\": \"error\", \"confidence\": \"high\", \"reason\": \"The supplied local pattern or reference evidence warrants correction.\", \"evidence\": [{\"cell\": \"Budget!E5\", \"quote\": \"999\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "8318f5415ca49eac"
+    },
+    {
+      "content": "{\"candidate_id\": \"e9d38f6e4d3b3742\", \"verdict\": \"assumption_to_verify\", \"confidence\": \"high\", \"reason\": \"Verify this labelled assumption before relying on it.\", \"evidence\": [{\"cell\": \"Budget!B10\", \"quote\": \"0.08\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "e9d38f6e4d3b3742"
+    },
+    {
+      "content": "{\"candidate_id\": \"b849f8298579131e\", \"verdict\": \"assumption_to_verify\", \"confidence\": \"high\", \"reason\": \"Verify this labelled assumption before relying on it.\", \"evidence\": [{\"cell\": \"Budget!B11\", \"quote\": \"150\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "b849f8298579131e"
+    },
+    {
+      "content": "{\"headline\": \"Review the flagged formulas, documented exceptions and assumptions.\", \"order\": [\"a6d9548e9502de7e\", \"6c5def7e1656cd19\", \"8318f5415ca49eac\", \"e9d38f6e4d3b3742\", \"b849f8298579131e\"], \"conflicts\": [], \"question_for_user\": null}",
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "summary"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "workbook": "event_budget.xlsx",
+  "expectations": [
+    {
+      "cell": "Event!D4",
+      "kind": [
+        "empty_reference"
+      ],
+      "scripted_verdict": "error",
+      "final_verdict": "error",
+      "grounding": "passed",
+      "impact": null
+    },
+    {
+      "cell": "Event!D5",
+      "kind": [
+        "hardcoded_in_formula_run"
+      ],
+      "scripted_verdict": "intended_exception",
+      "final_verdict": "intended_exception",
+      "grounding": "passed",
+      "impact": null
+    }
+  ],
+  "responses": [
+    {
+      "content": "{\"sheets\": [{\"name\": \"Event\", \"role\": \"data\", \"header_row\": 1, \"label_column\": \"A\", \"notes_column\": \"E\", \"total_rows\": [], \"rules_ranges\": []}]}",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "structure"
+    },
+    {
+      "content": "{\"candidate_id\": \"e9c3faca5778fcac\", \"verdict\": \"error\", \"confidence\": \"high\", \"reason\": \"The supplied local pattern or reference evidence warrants correction.\", \"evidence\": [{\"cell\": \"Event!D4\", \"quote\": \"=B4*C4\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "e9c3faca5778fcac"
+    },
+    {
+      "tool_calls": [
+        {
+          "id": "note_ba85ccc77762346e",
+          "type": "function",
+          "function": {
+            "name": "find_notes",
+            "arguments": "{\"sheet\": \"Event\", \"row\": 5}"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 40
+      },
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "stage": "judge",
+      "candidate_id": "ba85ccc77762346e"
+    },
+    {
+      "content": "{\"candidate_id\": \"ba85ccc77762346e\", \"verdict\": \"intended_exception\", \"confidence\": \"high\", \"reason\": \"The row note documents this exception.\", \"evidence\": [{\"cell\": \"Event!E5\", \"quote\": \"Manual override: venue quote received\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "ba85ccc77762346e"
+    },
+    {
+      "content": "{\"headline\": \"Review the flagged formulas, documented exceptions and assumptions.\", \"order\": [\"e9c3faca5778fcac\", \"ba85ccc77762346e\"], \"conflicts\": [], \"question_for_user\": null}",
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "summary"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "workbook": "club_membership_fees.xlsx",
+  "expectations": [
+    {
+      "cell": "Members!C6",
+      "kind": [
+        "hardcoded_in_formula_run"
+      ],
+      "scripted_verdict": "error",
+      "final_verdict": "error",
+      "grounding": "passed",
+      "impact": null
+    },
+    {
+      "cell": "Members!C14",
+      "kind": [
+        "pattern_break"
+      ],
+      "scripted_verdict": "error",
+      "final_verdict": "error",
+      "grounding": "passed",
+      "impact": null
+    },
+    {
+      "cell": "Members!C20",
+      "kind": [
+        "hardcoded_in_formula_run"
+      ],
+      "scripted_verdict": "intended_exception",
+      "final_verdict": "intended_exception",
+      "grounding": "passed",
+      "impact": null
+    },
+    {
+      "cell": "Members!C26",
+      "kind": [
+        "hardcoded_in_formula_run"
+      ],
+      "scripted_verdict": "ask",
+      "final_verdict": "ask",
+      "grounding": "passed",
+      "impact": null
+    },
+    {
+      "cell": "Members!C32",
+      "kind": [
+        "aggregate_range_gap"
+      ],
+      "scripted_verdict": "error",
+      "final_verdict": "error",
+      "grounding": "passed",
+      "impact": 50
+    },
+    {
+      "cell": "Fee Rules!B3",
+      "kind": [
+        "labelled_constant"
+      ],
+      "scripted_verdict": "assumption_to_verify",
+      "final_verdict": "assumption_to_verify",
+      "grounding": "passed",
+      "impact": null
+    }
+  ],
+  "responses": [
+    {
+      "content": "{\"sheets\": [{\"name\": \"Members\", \"role\": \"data\", \"header_row\": 1, \"label_column\": \"A\", \"notes_column\": \"D\", \"total_rows\": [32], \"rules_ranges\": []}, {\"name\": \"Fee Rules\", \"role\": \"rules\", \"header_row\": 1, \"label_column\": \"A\", \"notes_column\": null, \"total_rows\": [], \"rules_ranges\": [\"A1:B4\"]}]}",
+      "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "structure"
+    },
+    {
+      "content": "{\"candidate_id\": \"83012cc04921110d\", \"verdict\": \"error\", \"confidence\": \"high\", \"reason\": \"The supplied local pattern or reference evidence warrants correction.\", \"evidence\": [{\"cell\": \"Members!C6\", \"quote\": \"125\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "83012cc04921110d"
+    },
+    {
+      "content": "{\"candidate_id\": \"ba087c88e55d5473\", \"verdict\": \"error\", \"confidence\": \"high\", \"reason\": \"The supplied local pattern or reference evidence warrants correction.\", \"evidence\": [{\"cell\": \"Members!C14\", \"quote\": \"=IF(B14=\\\"Student\\\",'Fee Rules'!$B$4*'Fee Rules'!$B$3,'Fee Rules'!$B$4)\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "ba087c88e55d5473"
+    },
+    {
+      "tool_calls": [
+        {
+          "id": "note_e0f90cbc59e12568",
+          "type": "function",
+          "function": {
+            "name": "find_notes",
+            "arguments": "{\"sheet\": \"Members\", \"row\": 20}"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 40
+      },
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "stage": "judge",
+      "candidate_id": "e0f90cbc59e12568"
+    },
+    {
+      "content": "{\"candidate_id\": \"e0f90cbc59e12568\", \"verdict\": \"intended_exception\", \"confidence\": \"high\", \"reason\": \"The row note documents this exception.\", \"evidence\": [{\"cell\": \"Members!D20\", \"quote\": \"Waived — board decision\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "e0f90cbc59e12568"
+    },
+    {
+      "content": "{\"candidate_id\": \"cdefc88159dd7810\", \"verdict\": \"ask\", \"confidence\": \"medium\", \"reason\": \"The zero has no documenting note; please confirm its intent.\", \"evidence\": [{\"cell\": \"Members!C26\", \"quote\": \"0\"}], \"fix\": null, \"question\": \"Is this zero intentional?\"}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "cdefc88159dd7810"
+    },
+    {
+      "content": "{\"candidate_id\": \"2e92dae5387bb015\", \"verdict\": \"error\", \"confidence\": \"high\", \"reason\": \"The supplied local pattern or reference evidence warrants correction.\", \"evidence\": [{\"cell\": \"Members!C32\", \"quote\": \"=SUM(C2:C30)\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "2e92dae5387bb015"
+    },
+    {
+      "content": "{\"candidate_id\": \"28316964f10ac851\", \"verdict\": \"assumption_to_verify\", \"confidence\": \"high\", \"reason\": \"Verify this labelled assumption before relying on it.\", \"evidence\": [{\"cell\": \"Fee Rules!B3\", \"quote\": \"0.5\"}], \"fix\": null, \"question\": null}",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "judge",
+      "candidate_id": "28316964f10ac851"
+    },
+    {
+      "content": "{\"headline\": \"Review the flagged formulas, documented exceptions and assumptions.\", \"order\": [\"83012cc04921110d\", \"ba087c88e55d5473\", \"e0f90cbc59e12568\", \"cdefc88159dd7810\", \"2e92dae5387bb015\", \"28316964f10ac851\"], \"conflicts\": [], \"question_for_user\": \"Please confirm the undocumented zero.\"}",
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "usage": {
+        "prompt_tokens": 1200,
+        "completion_tokens": 200
+      },
+      "rate_headers": {
+        "x-ratelimit-remaining-requests": "99",
+        "x-ratelimit-remaining-tokens": "100000"
+      },
+      "stage": "summary"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "club_membership_fees.xlsx": [
+    {
+      "sheet": "Members",
+      "cell": "C6",
+      "kind": "hardcoded_in_formula_run",
+      "label": "error"
+    },
+    {
+      "sheet": "Members",
+      "cell": "C14",
+      "kind": "pattern_break",
+      "label": "error"
+    },
+    {
+      "sheet": "Members",
+      "cell": "C20",
+      "kind": "hardcoded_in_formula_run",
+      "label": "intended_exception"
+    },
+    {
+      "sheet": "Members",
+      "cell": "C26",
+      "kind": "hardcoded_in_formula_run",
+      "label": "ambiguous"
+    },
+    {
+      "sheet": "Members",
+      "cell": "C32",
+      "kind": "aggregate_range_gap",
+      "label": "error"
+    }
+  ],
+  "small_business_budget.xlsx": [
+    {
+      "sheet": "Budget",
+      "cell": "H3",
+      "kind": "aggregate_range_gap",
+      "label": "error"
+    },
+    {
+      "sheet": "Budget",
+      "cell": "D4",
+      "kind": "pattern_break",
+      "label": "error"
+    },
+    {
+      "sheet": "Budget",
+      "cell": "E5",
+      "kind": "hardcoded_in_formula_run",
+      "label": "error"
+    },
+    {
+      "sheet": "Budget",
+      "cell": "B10",
+      "kind": "labelled_constant",
+      "label": "assumption"
+    },
+    {
+      "sheet": "Budget",
+      "cell": "B11",
+      "kind": "labelled_constant",
+      "label": "assumption"
+    }
+  ],
+  "event_budget.xlsx": [
+    {
+      "sheet": "Event",
+      "cell": "D4",
+      "kind": "empty_reference",
+      "label": "error"
+    },
+    {
+      "sheet": "Event",
+      "cell": "D5",
+      "kind": "hardcoded_in_formula_run",
+      "label": "intended_exception"
+    }
+  ]
+}

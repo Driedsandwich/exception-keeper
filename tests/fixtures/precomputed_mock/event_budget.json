@@ -1,0 +1,308 @@
+{
+  "workbook": "event_budget.xlsx",
+  "generated_at": "2026-10-24T01:49:02.664074+09:00",
+  "source": "mock",
+  "models": {
+    "structure": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "judge": "nvidia/nemotron-3-super-120b-a12b",
+    "summary": "nvidia/Nemotron-3-Ultra-550b-a55b"
+  },
+  "outline": {
+    "sheets": [
+      {
+        "name": "Event",
+        "role": "data",
+        "header_row": 1,
+        "label_column": "A",
+        "notes_column": "E",
+        "total_rows": [],
+        "rules_ranges": []
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "e9c3faca5778fcac",
+      "sheet": "Event",
+      "cell": "D4",
+      "kind": [
+        "empty_reference"
+      ],
+      "formula": "=B4*C4",
+      "r1c1": "=RC[-2]*RC[-1]",
+      "value": 0,
+      "majority_r1c1": null,
+      "neighbours": [
+        {
+          "cell": "D1",
+          "formula": null,
+          "value": "Amount",
+          "r1c1": null
+        },
+        {
+          "cell": "D2",
+          "formula": "=B2*C2",
+          "value": 100,
+          "r1c1": "=RC[-2]*RC[-1]"
+        },
+        {
+          "cell": "D3",
+          "formula": "=B3*C3",
+          "value": 100,
+          "r1c1": "=RC[-2]*RC[-1]"
+        },
+        {
+          "cell": "D5",
+          "formula": null,
+          "value": 375,
+          "r1c1": null
+        },
+        {
+          "cell": "D6",
+          "formula": "=B6*C6",
+          "value": 150,
+          "r1c1": "=RC[-2]*RC[-1]"
+        }
+      ],
+      "context": {
+        "row_label": "Refreshments",
+        "column_header": "Amount",
+        "notes": null,
+        "notes_cell": "E4",
+        "comment": "Unit cost pending from Vendor A",
+        "number_format": "0.00",
+        "references": [
+          {
+            "sheet": "Event",
+            "cell": "B4",
+            "formula": null,
+            "value": 25,
+            "row_label": "Refreshments",
+            "comment": null
+          },
+          {
+            "sheet": "Event",
+            "cell": "C4",
+            "formula": null,
+            "value": null,
+            "row_label": null,
+            "comment": null
+          }
+        ],
+        "row_neighbours": [
+          {
+            "cell": "A4",
+            "formula": null,
+            "value": "Refreshments",
+            "r1c1": null
+          },
+          {
+            "cell": "B4",
+            "formula": null,
+            "value": 25,
+            "r1c1": null
+          },
+          {
+            "cell": "C4",
+            "formula": null,
+            "value": null,
+            "r1c1": null
+          },
+          {
+            "cell": "E4",
+            "formula": null,
+            "value": null,
+            "r1c1": null
+          }
+        ],
+        "empty_references": [
+          {
+            "sheet": "Event",
+            "cell": "C4"
+          }
+        ]
+      },
+      "impact": null,
+      "candidate_id": "e9c3faca5778fcac",
+      "verdict": "error",
+      "confidence": "high",
+      "reason": "The supplied local pattern or reference evidence warrants correction.",
+      "evidence": [
+        {
+          "cell": "Event!D4",
+          "quote": "=B4*C4"
+        }
+      ],
+      "fix": null,
+      "question": null,
+      "original_verdict": "error",
+      "decided_by": "nvidia/nemotron-3-super-120b-a12b",
+      "grounding": "passed",
+      "grounding_reasons": []
+    },
+    {
+      "id": "ba85ccc77762346e",
+      "sheet": "Event",
+      "cell": "D5",
+      "kind": [
+        "hardcoded_in_formula_run"
+      ],
+      "formula": null,
+      "r1c1": null,
+      "value": 375,
+      "majority_r1c1": "=RC[-2]*RC[-1]",
+      "neighbours": [
+        {
+          "cell": "D2",
+          "formula": "=B2*C2",
+          "value": 100,
+          "r1c1": "=RC[-2]*RC[-1]"
+        },
+        {
+          "cell": "D3",
+          "formula": "=B3*C3",
+          "value": 100,
+          "r1c1": "=RC[-2]*RC[-1]"
+        },
+        {
+          "cell": "D4",
+          "formula": "=B4*C4",
+          "value": 0,
+          "r1c1": "=RC[-2]*RC[-1]"
+        },
+        {
+          "cell": "D6",
+          "formula": "=B6*C6",
+          "value": 150,
+          "r1c1": "=RC[-2]*RC[-1]"
+        }
+      ],
+      "context": {
+        "row_label": "Venue",
+        "column_header": "Amount",
+        "notes": "Manual override: venue quote received",
+        "notes_cell": "E5",
+        "comment": null,
+        "number_format": "0.00",
+        "references": [],
+        "row_neighbours": [
+          {
+            "cell": "A5",
+            "formula": null,
+            "value": "Venue",
+            "r1c1": null
+          },
+          {
+            "cell": "B5",
+            "formula": null,
+            "value": 1,
+            "r1c1": null
+          },
+          {
+            "cell": "C5",
+            "formula": null,
+            "value": 400,
+            "r1c1": null
+          },
+          {
+            "cell": "E5",
+            "formula": null,
+            "value": "Manual override: venue quote received",
+            "r1c1": null
+          }
+        ],
+        "pattern_axis": "column"
+      },
+      "impact": null,
+      "candidate_id": "ba85ccc77762346e",
+      "verdict": "intended_exception",
+      "confidence": "high",
+      "reason": "The row note documents this exception.",
+      "evidence": [
+        {
+          "cell": "Event!E5",
+          "quote": "Manual override: venue quote received"
+        }
+      ],
+      "fix": null,
+      "question": null,
+      "original_verdict": "intended_exception",
+      "decided_by": "nvidia/nemotron-3-super-120b-a12b",
+      "grounding": "passed",
+      "grounding_reasons": []
+    }
+  ],
+  "summary": {
+    "headline": "Review the flagged formulas, documented exceptions and assumptions.",
+    "order": [
+      "e9c3faca5778fcac",
+      "ba85ccc77762346e"
+    ],
+    "conflicts": [],
+    "question_for_user": null
+  },
+  "cost": {
+    "stages": {
+      "structure": {
+        "estimated_usd": 0.00012,
+        "prompt_tokens": 1200,
+        "completion_tokens": 200,
+        "calls": 1,
+        "estimated": false
+      },
+      "judge": {
+        "estimated_usd": 0.0014759999999999999,
+        "prompt_tokens": 3600,
+        "completion_tokens": 440,
+        "calls": 3,
+        "estimated": false
+      },
+      "summary": {
+        "estimated_usd": 0.0018,
+        "prompt_tokens": 1200,
+        "completion_tokens": 200,
+        "calls": 1,
+        "estimated": false
+      }
+    },
+    "total_usd": 0.003396,
+    "usage": "reported",
+    "rate_headers": [
+      {
+        "stage": "structure",
+        "headers": {
+          "x-ratelimit-remaining-requests": "99",
+          "x-ratelimit-remaining-tokens": "100000"
+        }
+      },
+      {
+        "stage": "judge",
+        "headers": {
+          "x-ratelimit-remaining-requests": "99",
+          "x-ratelimit-remaining-tokens": "100000"
+        }
+      },
+      {
+        "stage": "judge",
+        "headers": {}
+      },
+      {
+        "stage": "judge",
+        "headers": {
+          "x-ratelimit-remaining-requests": "99",
+          "x-ratelimit-remaining-tokens": "100000"
+        }
+      },
+      {
+        "stage": "summary",
+        "headers": {
+          "x-ratelimit-remaining-requests": "99",
+          "x-ratelimit-remaining-tokens": "100000"
+        }
+      }
+    ]
+  },
+  "stopped_reason": null,
+  "warnings": [],
+  "precomputed_sample": null
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Review spreadsheet anomalies while preserving documented exceptions, with cell-level evidence.">
+  <title>Exception Keeper — Keep the context</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#results">Skip to findings</a>
+  <div id="app-shell" class="shell">
+    <header class="masthead"><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true">▦</span> Exception Keeper</a><span class="edition">A second look, with context.</span></header>
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <div><p class="eyebrow">SPREADSHEETS · EXPLAINED</p><h1 id="intro-title">Keep the exception.<br>Catch the error.</h1><p class="lead">Find unusual spreadsheet cells, check their evidence, and distinguish errors from documented exceptions.</p></div>
+        <div class="intro-note"><span class="small-label">THE DIFFERENCE IS CONTEXT</span><p>A manual override can be a mistake.<br>Or the one cell that tells the whole story.</p><span class="note-cell">D5 <span>↳ documented exception</span></span></div>
+      </section>
+      <section id="samples" class="samples" aria-labelledby="samples-title">
+        <div class="section-heading"><h2 id="samples-title">Start with a sample</h2><span class="pill">No key needed · cost $0</span></div>
+        <p class="muted">Sample results are recorded live runs of NVIDIA Nemotron models; viewing them costs $0. Select a workbook to explore its evidence.</p>
+        <div id="sample-buttons" class="sample-buttons"></div>
+      </section>
+      <section class="upload-panel" aria-labelledby="upload-title">
+        <div><h2 id="upload-title">Bring your own workbook</h2><p id="privacy" class="muted">Upload only spreadsheets you are allowed to share. Do not include personal data. Files are not stored.</p><p id="file-help" class="fine">.xlsx only · up to 1 MB · live review requires server opt-in and granted credits.</p></div>
+        <form id="review-form">
+          <label for="workbook">Workbook (.xlsx, up to 1 MB)</label>
+          <input id="workbook" name="workbook" type="file" accept=".xlsx" required aria-describedby="file-help privacy form-error">
+          <label for="passphrase">Judge passphrase <span class="muted">(optional)</span></label>
+          <input id="passphrase" name="passphrase" type="password" autocomplete="off" maxlength="1000" aria-describedby="passphrase-help">
+          <p id="passphrase-help" class="fine">Leave blank for the public lane.</p>
+          <button type="submit" id="run" class="primary">Review workbook <span aria-hidden="true">↗</span></button>
+          <p id="form-error" role="alert"></p>
+        </form>
+      </section>
+      <div id="progress" class="progress" role="status" aria-live="polite"></div>
+      <section id="results" class="results" aria-label="Workbook findings" tabindex="-1"></section>
+    </main>
+    <footer>Engine evidence first. Model judgment second. Your decision last.<br>Saved values are not recalculated. Suggested formulas are not applied.</footer>
+  </div>
+</body>
+</html>
