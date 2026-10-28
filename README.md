@@ -23,7 +23,7 @@ at runtime, with structured JSON output.
 |---|---|---|---|
 | Find candidates | none (deterministic engine) | Five detectors: pattern break, typed number in a formula run, total that skips cells, formula reading an empty input, labelled constant. The engine also computes the impact. | 0 |
 | Outline | `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B` | Which sheets hold data, rules and notes. | 1 |
-| Judge | `nvidia/nemotron-3-super-120b-a12b` | Classifies each candidate as error, documented exception, ask or assumption to verify. Read-only tools (read a range, find notes, find a rule, list same-pattern cells) are offered; in the recorded runs the supplied context was enough. | up to 12 |
+| Judge | `nvidia/nemotron-3-super-120b-a12b` | Classifies each candidate as error, documented exception, ask or assumption to verify. Read-only tools (read a range, find notes, find a rule, list same-pattern cells) are offered; in the recorded runs Super did not call them. | up to 12 |
 | Ground | none (code) | A quote must be found at the cited cell; an exception must quote a note, comment or rule; a fix must be a valid formula. Otherwise the verdict becomes "ask". | 0 |
 | Summarise | `nvidia/Nemotron-3-Ultra-550b-a55b` | Orders the findings, names conflicts, writes the headline and the one question for the user. | 1 |
 
