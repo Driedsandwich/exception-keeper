@@ -1,9 +1,50 @@
 # Exception Keeper
 
-Find unusual spreadsheet cells, inspect the engine's evidence, and distinguish
-errors from documented exceptions. The English web app includes three fictional
-sample workbooks. Their results are **recorded live runs** of NVIDIA Nemotron 3 models
-through Nebius Token Factory (2026-10-24); viewing them costs $0 and calls nothing.
+Exception Keeper finds the spreadsheet cells that break the pattern, then asks NVIDIA
+Nemotron to tell a mistake from a documented exception. Every verdict must point back at
+the workbook (a quote found at the cell it cites, or the empty input itself); a verdict
+that cannot be grounded is downgraded to "ask a person".
+
+- **Live demo:** _added at deployment_
+- **Video (under 3 minutes):** _added at upload_
+- **Track:** Best Apps and Agents · Nebius x NVIDIA Global AI Hackathon
+
+The web app includes three fictional sample workbooks. Their results are **recorded live
+runs** of NVIDIA Nemotron 3 models through Nebius Token Factory (2026-10-24); viewing them
+costs $0 and calls nothing. Uploading your own `.xlsx` runs the models live.
+
+## How NVIDIA Nemotron and Nebius Token Factory are used
+
+Code finds and measures the unusual cells; the models only interpret them. All model calls
+go to the Nebius Token Factory OpenAI-compatible API (`https://api.tokenfactory.nebius.com/v1/`)
+at runtime, with structured JSON output.
+
+| Stage | Model | What it does | Calls per workbook |
+|---|---|---|---|
+| Find candidates | none (deterministic engine) | Five detectors: pattern break, typed number in a formula run, total that skips cells, formula reading an empty input, labelled constant. The engine also computes the impact. | 0 |
+| Outline | `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B` | Which sheets hold data, rules and notes. | 1 |
+| Judge | `nvidia/nemotron-3-super-120b-a12b` | Classifies each candidate as error, documented exception, ask or assumption to verify. Read-only tools (read a range, find notes, find a rule, list same-pattern cells) are offered; in the recorded runs the supplied context was enough. | up to 12 |
+| Ground | none (code) | A quote must be found at the cited cell; an exception must quote a note, comment or rule; a fix must be a valid formula. Otherwise the verdict becomes "ask". | 0 |
+| Summarise | `nvidia/Nemotron-3-Ultra-550b-a55b` | Orders the findings, names conflicts, writes the headline and the one question for the user. | 1 |
+
+Token Factory made the three-size design cheap to build: one endpoint and key, a model-ID
+change between stages, rate-limit headers and per-model prices that feed the app's spending
+ledger. A full sample run cost $0.002–$0.016.
+
+## Run it locally
+
+Developed and tested with Python 3.14.
+
+```sh
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt pytest xlsxwriter   # xlsxwriter: tests and sample generator
+.venv/bin/python -m pytest -q        # offline tests, no network
+.venv/bin/python serve.py            # then open http://127.0.0.1:4174
+```
+
+The samples work without a key. To run the models live locally, set `NEBIUS_API_KEY`,
+`EK_LIVE=1` and `EK_GRANTED_CREDITS_USD` (your granted credit) in the environment.
+`samples/make_samples.py` rebuilds the three sample workbooks and their ground truth.
 
 ## Recorded live results (2026-10-24)
 
@@ -27,8 +68,8 @@ table gives every run, so the spread is visible.
 Repeated misses: C26 (ambiguous) was judged an error in 9 of 9 runs; event D4 (a blank
 input with a "pending" comment) was asked in 4 of 6 and called a documented exception
 once; B10 (assumption) was asked in 7 of 9 and B11 (assumption) judged an error in 6 of 9.
-Many misses are "ask", which hands the cell to a person; C26, B11 and one D4 are
-confident misses. A run costs $0.002–$0.016 per sample. Known limitations:
+Across all runs, 33 of 102 verdicts on planted cells were wrong: 17 were "ask", which leaves
+the cell to a person, and 16 were confident mistakes (mostly C26 and B11, once D4). A run costs $0.002–$0.016 per sample. Known limitations:
 
 - Verdicts vary between runs even at temperature 0. The engine's evidence and impact
   figures are deterministic; the model verdicts are not.
@@ -102,9 +143,10 @@ Vercel's supplied Python documentation names `app.py` and says
 `app for most ASGI or WSGI frameworks`; its supplied limits excerpt gives Hobby
 `300s (5 minutes) default and max`. Sources: [Python runtime](https://vercel.com/docs/functions/runtimes/python.md)
 and [limits](https://vercel.com/docs/limits.md), fetched by the requester on 2026-10-28.
-No `vercel.json` is added: the Python framework `maxDuration` configuration syntax
-was not verified offline. Detection of this standard-library WSGI app, deployed
-duration and the Upstash REST request shape remain **unverified until deploy**.
+`vercel.json` sets `maxDuration` 120 s on the `app.py` entrypoint, the form Vercel documents
+for Python apps ("Key the `functions` entry on that entrypoint file"). The Upstash REST request
+shape (a JSON array command in a POST body with a Bearer token) follows
+[Upstash's REST API docs](https://upstash.com/docs/redis/features/restapi).
 See the dated Order 07 section in [MODEL_STAGE_NOTES.md](MODEL_STAGE_NOTES.md).
 
 ## Offline checks
@@ -137,3 +179,7 @@ Library and runtime source excerpts are recorded in [ENGINE_NOTES.md](ENGINE_NOT
 and [MODEL_STAGE_NOTES.md](MODEL_STAGE_NOTES.md). The WSGI entrypoint and Redis
 ledger are tested offline; no deployment was attempted. Corrected-workbook export
 remains outside this order.
+
+## License
+
+[Apache License 2.0](LICENSE).
