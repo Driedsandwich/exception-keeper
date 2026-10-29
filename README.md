@@ -5,7 +5,7 @@ Nemotron to tell a mistake from a documented exception. Every verdict must point
 the workbook (a quote found at the cell it cites, or the empty input itself); a verdict
 that cannot be grounded is downgraded to "ask a person".
 
-- **Live demo:** _added at deployment_
+- **Live demo:** https://exception-keeper.vercel.app/
 - **Video (under 3 minutes):** _added at upload_
 - **Track:** Best Apps and Agents · Nebius x NVIDIA Global AI Hackathon
 
