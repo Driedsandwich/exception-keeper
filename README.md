@@ -6,7 +6,7 @@ the workbook (a quote found at the cell it cites, or the empty input itself); a 
 that cannot be grounded is downgraded to "ask a person".
 
 - **Live demo:** https://exception-keeper.vercel.app/
-- **Video (under 3 minutes):** https://youtu.be/DCj6S52lHZ0
+- **Video (under 3 minutes):** _added at upload_
 - **Track:** Best Apps and Agents · Nebius x NVIDIA Global AI Hackathon
 
 The web app includes three fictional sample workbooks. Their results are **recorded live
